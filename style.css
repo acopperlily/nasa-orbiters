@@ -9,3 +9,7 @@ body {
   color: gray;
   background: black;
 }
+
+.hidden {
+  display: none;
+}
