@@ -8,6 +8,7 @@ body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: gray;
   background: black;
+  height: 100vh;
 }
 
 .hidden {

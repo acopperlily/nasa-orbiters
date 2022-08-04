@@ -14,8 +14,8 @@ async function getInfo(e) {
     const data = await res.json();
 
     console.log(data);
-    console.log(data.serialNum);
-    console.log(data.numFlights);
+    console.log(data.serialNumber);
+    console.log(data.numberOfFlights);
 
     const h2 = document.querySelector('h2');
     h2.textContent = `Space Shuttle ${data.name}`;
@@ -23,25 +23,27 @@ async function getInfo(e) {
     const quickStats = document.querySelector('#quick-stats');
     quickStats.classList.remove('hidden');
 
-    removeListItems();
-
-    buildListItem('Serial Number', data.serialNum);
-    buildListItem('Number of Flights', data.numFlights);
+    // Update DOM with retrieved info
+    populateStats(data);
     
   } catch(error) {
       console.log(error);
   }
 }
 
-function buildListItem(stat, info) {
-  const li = document.createElement('li');
-  li.textContent = `${stat}: ${info}`;
-  ul.appendChild(li);
-}
+// Put data inside of list items
+function populateStats(data) {
+  document.querySelector('#serial-number').textContent = `Serial number: ${data.serialNumber}`;
 
-function removeListItems() {
-  console.log(ul.children.length);
-  while (ul.children.length) {
-    ul.removeChild(ul.firstElementChild);
-  }
+  document.querySelector('#number-of-orbits').textContent = `Orbits: ${data.numberOfOrbits}`;
+
+  document.querySelector('#number-of-flights').textContent = `Missions: ${data.numberOfFlights}`;
+
+  document.querySelector('#flight-hours').textContent = `Flight hours: ${data.flightHours}`;
+
+  document.querySelector('#miles-traveled').textContent = `Miles traveled: ${data.milesTraveled}`;
+
+  document.querySelector('#first-mission').textContent = `First mission: ${data.firstMission}`;
+
+  document.querySelector('#last-mission').textContent = `Last mission: ${data.lastMission}`;
 }
